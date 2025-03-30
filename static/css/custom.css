@@ -1,0 +1,84 @@
+/* Custom CSS styles for FarmBot application */
+
+/* Chat message styling */
+.bot-message, .user-message {
+    margin-bottom: 1rem;
+}
+
+.message-content {
+    max-width: 85%;
+    word-wrap: break-word;
+}
+
+.user-message .message-content {
+    background-color: var(--bs-primary);
+    color: white;
+    border-radius: 1rem 1rem 0 1rem;
+}
+
+.bot-message .message-content {
+    background-color: var(--bs-gray-800);
+    border-radius: 1rem 1rem 1rem 0;
+}
+
+/* Animations for better UX */
+.typing-indicator {
+    display: inline-block;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background-color: var(--bs-gray-500);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 3px;
+    animation: typing 1.4s infinite both;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.4; transform: scale(1); }
+}
+
+/* Adding some focus effect to the chat input */
+#user-input:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Language toggle styling */
+#languageToggle {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#languageToggle:hover {
+    background-color: var(--bs-light);
+    color: var(--bs-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .message-content {
+        max-width: 90%;
+    }
+    
+    #chat-messages {
+        height: 300px;
+    }
+    
+    #languageToggle {
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+}
