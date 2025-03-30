@@ -1,0 +1,137 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card bg-dark">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-info-circle fa-3x text-info me-3"></i>
+                    <h1 class="card-title mb-0">About FarmBot</h1>
+                </div>
+                <p class="card-text lead">
+                    Learn more about our mission to help farmers with intelligent crop recommendations and climate adaptation strategies.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card bg-dark mb-4">
+            <div class="card-header">
+                <h2><i class="fas fa-bullseye me-2"></i>Our Mission</h2>
+            </div>
+            <div class="card-body">
+                <p>
+                    FarmBot was created to support farmers by providing accessible, science-backed crop recommendations 
+                    and climate adaptation strategies. In a world of changing climate patterns, farmers face increasing 
+                    challenges in selecting appropriate crops and implementing effective growing techniques.
+                </p>
+                <p>
+                    Our intelligent assistant analyzes various parameters including soil type, rainfall patterns, 
+                    temperature conditions, and more to provide personalized recommendations that maximize yield 
+                    and sustainability.
+                </p>
+                <p>
+                    We believe that by making agricultural knowledge more accessible, we can help farmers around 
+                    the world adapt to changing conditions and ensure food security for communities.
+                </p>
+            </div>
+        </div>
+
+        <div class="card bg-dark mb-4">
+            <div class="card-header">
+                <h2><i class="fas fa-cog me-2"></i>How It Works</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="p-3">
+                            <i class="fas fa-question-circle fa-3x mb-3 text-primary"></i>
+                            <h4>Ask Questions</h4>
+                            <p class="text-muted">Type natural language questions about crop recommendations or climate strategies</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="p-3">
+                            <i class="fas fa-filter fa-3x mb-3 text-primary"></i>
+                            <h4>Apply Filters</h4>
+                            <p class="text-muted">Refine recommendations with soil, temperature, and rainfall filters</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="p-3">
+                            <i class="fas fa-seedling fa-3x mb-3 text-primary"></i>
+                            <h4>Get Results</h4>
+                            <p class="text-muted">Receive tailored recommendations and climate adaptation strategies</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <p>
+                    FarmBot uses advanced natural language processing to understand your agriculture-related questions 
+                    and cross-references them with our extensive database of crop requirements and climate condition 
+                    responses. Our system considers multiple factors simultaneously to deliver the most relevant and 
+                    practical advice for your specific situation.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-dark mb-4">
+            <div class="card-header">
+                <h2><i class="fas fa-database me-2"></i>Our Data</h2>
+            </div>
+            <div class="card-body">
+                <p>
+                    FarmBot's recommendations are powered by an extensive database of:
+                </p>
+                <ul class="list-group list-group-flush bg-transparent">
+                    <li class="list-group-item bg-transparent">
+                        <i class="fas fa-leaf text-success me-2"></i> Crop growth requirements
+                    </li>
+                    <li class="list-group-item bg-transparent">
+                        <i class="fas fa-thermometer-half text-danger me-2"></i> Climate tolerance ranges
+                    </li>
+                    <li class="list-group-item bg-transparent">
+                        <i class="fas fa-cloud-rain text-info me-2"></i> Optimal water needs
+                    </li>
+                    <li class="list-group-item bg-transparent">
+                        <i class="fas fa-mountain text-secondary me-2"></i> Soil type suitability
+                    </li>
+                    <li class="list-group-item bg-transparent">
+                        <i class="fas fa-calendar-alt text-primary me-2"></i> Growing season information
+                    </li>
+                </ul>
+                <p class="mt-3">
+                    Our data is regularly updated with the latest agricultural research and climate pattern information.
+                </p>
+            </div>
+        </div>
+
+        <div class="card bg-dark">
+            <div class="card-header">
+                <h2><i class="fas fa-hands-helping me-2"></i>Get Involved</h2>
+            </div>
+            <div class="card-body">
+                <p>
+                    We're continuously improving FarmBot's capabilities and expanding our dataset. If you're interested in 
+                    contributing or providing feedback, we'd love to hear from you!
+                </p>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <i class="fas fa-envelope me-2"></i> Email: info@farmbot-project.org
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-globe me-2"></i> Website: www.farmbot-project.org
+                    </li>
+                    <li>
+                        <i class="fas fa-users me-2"></i> Community: forum.farmbot-project.org
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

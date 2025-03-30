@@ -1,0 +1,177 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <!-- Welcome Section -->
+    <div class="col-md-12 mb-4">
+        <div class="card bg-dark">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-tractor fa-3x text-info me-3"></i>
+                    <h1 class="card-title mb-0 lang-item" data-key="app_title">Crop Recommendation System</h1>
+                </div>
+                <p class="card-text lead lang-item" data-key="app_tagline">
+                    Find the best crops for your farm
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat and Filters Section -->
+    <div class="col-lg-8">
+        <div class="card bg-dark mb-4">
+            <div class="card-header">
+                <h2><i class="fas fa-comments me-2"></i><span class="lang-item" data-key="chat_title">Ask Farm Bot</span></h2>
+            </div>
+            <div class="card-body">
+                <!-- Chat Messages Display -->
+                <div id="chat-messages" class="mb-4 p-3 rounded" style="height: 400px; overflow-y: auto; background-color: var(--bs-dark);">
+                    <div class="bot-message mb-3">
+                        <div class="d-flex">
+                            <div class="me-2">
+                                <i class="fas fa-robot text-info"></i>
+                            </div>
+                            <div class="message-content p-3 rounded" style="background-color: var(--bs-gray-800);">
+                                <p>Hello! I'm FarmBot, your crop recommendation assistant. You can ask me questions like:</p>
+                                <ul>
+                                    <li>"What crops grow well in sandy soil?"</li>
+                                    <li>"Recommend crops for hot climate and moderate rainfall"</li>
+                                    <li>"Climate remedy for drought conditions"</li>
+                                    <li>"What should I plant during the winter season?"</li>
+                                </ul>
+                                <p>Use the filters on the right to narrow down recommendations!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <form id="chat-form" class="d-flex">
+                    <input type="text" id="user-input" class="form-control me-2" 
+                           placeholder="Ask about crops, soil types, or climate remedies..." required>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Visualization Section -->
+        <div class="card bg-dark mb-4">
+            <div class="card-header">
+                <h2><i class="fas fa-chart-bar me-2"></i>Crop Suitability</h2>
+            </div>
+            <div class="card-body">
+                <p>Based on your selected criteria</p>
+                <div class="chart-container" style="position: relative; height:300px; width:100%">
+                    <canvas id="cropChart"></canvas>
+                </div>
+                <div class="text-center mt-3">
+                    <small class="text-muted">The graph shows relative suitability scores for different crops based on selected conditions</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters and Info Section -->
+    <div class="col-lg-4">
+        <!-- Climate Filters -->
+        <div class="card bg-dark mb-4">
+            <div class="card-header">
+                <h2><i class="fas fa-filter me-2"></i>Filters</h2>
+            </div>
+            <div class="card-body">
+                <form id="filters-form">
+                    <div class="mb-3">
+                        <label for="soil-type" class="form-label">Soil Type</label>
+                        <select id="soil-type" class="form-select">
+                            <option value="">Any Soil Type</option>
+                            <!-- Soil options will be loaded dynamically -->
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="month" class="form-label">Month</label>
+                        <select id="month" class="form-select">
+                            <option value="">Any Month</option>
+                            <!-- Month options will be loaded dynamically -->
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="season" class="form-label">Season</label>
+                        <select id="season" class="form-select">
+                            <option value="">Any Season</option>
+                            <!-- Season options will be loaded dynamically -->
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="land-type" class="form-label">Land Type</label>
+                        <select id="land-type" class="form-select">
+                            <option value="">Any Land Type</option>
+                            <!-- Land type options will be loaded dynamically -->
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="land-size" class="form-label">Land Size (acres)</label>
+                        <input type="number" id="land-size" class="form-control" value="1" min="0.1" step="0.1">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="climate-condition" class="form-label">Climate Condition</label>
+                        <select id="climate-condition" class="form-select">
+                            <option value="">Any Condition</option>
+                            <option value="Drought">Drought</option>
+                            <option value="Flood">Flood</option>
+                        </select>
+                    </div>
+                    
+                    <button type="button" id="apply-filters" class="btn btn-primary w-100">
+                        Apply Filters
+                    </button>
+                    <button type="button" id="reset-filters" class="btn btn-outline-secondary w-100 mt-2">
+                        Reset Filters
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Quick Tips Box -->
+        <div class="card bg-dark">
+            <div class="card-header">
+                <h2><i class="fas fa-lightbulb me-2"></i>Farming Tips</h2>
+            </div>
+            <div class="card-body">
+                <div id="tips-carousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="p-3 bg-dark rounded">
+                                <h5>Drought Adaptation</h5>
+                                <p>Mulching helps reduce water evaporation from soil and keeps roots cooler during hot weather.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="p-3 bg-dark rounded">
+                                <h5>Pest Management</h5>
+                                <p>Companion planting can deter pests naturally - try marigolds near tomatoes to repel nematodes.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="p-3 bg-dark rounded">
+                                <h5>Soil Health</h5>
+                                <p>Rotate crops yearly to prevent soil nutrient depletion and reduce pest buildup.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}
